@@ -40,9 +40,8 @@ public class Trabalho2 {
 	public static void questao1() {	
 		int n = 12;
 		for(int i = 0; i<TAMANHO; i++) {
-			art[i].numeroVezes = n;
-			n--;
-			System.out.println(art[i].numeroVezes);
+			art[i].numeroVezes = Integer.parseInt(JOptionPane.showInputDialog("Insira o número de vezes que a música " + art[i].musica + " do artista " + art[i].artista + 
+				" foi pedida."));
 		}	
 	}
 	
