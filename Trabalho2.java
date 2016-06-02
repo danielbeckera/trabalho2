@@ -1,7 +1,6 @@
 import javax.swing.JOptionPane;
 
 public class Trabalho2 {
-	// Abstract data
 	static class Art {	
 		String compartimento;
 		int numeroVezes;
@@ -41,8 +40,6 @@ public class Trabalho2 {
 	public static void questao1() {	
 		int n = 12;
 		for(int i = 0; i<TAMANHO; i++) {
-			// art[i].numeroVezes = Integer.parseInt(JOptionPane.showInputDialog("Olá, insira o número de vezes que a música "
-					// + art[i].musica + " de " + art[i].artista + " foi pedida nesta JUKEBOX:"));
 			art[i].numeroVezes = n;
 			n--;
 			System.out.println(art[i].numeroVezes);
@@ -87,7 +84,7 @@ public class Trabalho2 {
 		}
 		return "O nome do artista é: " + valores.artista
 			+ "\nO número do compartimento é: " + valores.compartimento
-			+ "\nE a musica mais pedida é: " + valores.musica;
+			+ "\nE a música mais pedida é: " + valores.musica;
 	}
 	
 //	5) (FUNÇÃO e passagem de parâmetro por VALOR) Mostre o número do
@@ -104,7 +101,7 @@ public class Trabalho2 {
 		}
 		return "O nome do artista é: " + valores.artista
 			+ "\nO número do compartimento é: " + valores.compartimento
-			+ "\nE a musica menos pedida é: " + valores.musica;
+			+ "\nE a música menos pedida é: " + valores.musica;
 	}
 
 //	6) (FUNÇÃO e passagem de parâmetro por VALOR) Solicite que o usuário informe um número
@@ -275,7 +272,7 @@ public class Trabalho2 {
 
 				case 9:
 					escolha = JOptionPane.showInputDialog("Digite o nome de um artista para saber quantas"
-					+ "vezes ele foi tocado:");
+					+ " vezes ele foi tocado:");
 
 					JOptionPane.showMessageDialog(null, "O artista solicitado tocou " + questao9(escolha)
 									+ " músicas ao todo, sendo que a Jukebox tocou " + questao3() + ".");
