@@ -6,12 +6,13 @@ public class Trabalho2 {
 		String compartimento;
 		int numeroVezes;
 		String musica;	
-		String artista;		
+		String artista;
 	}
 
 	static final int TAMANHO = 12;
 	static Art[] art = new Art[TAMANHO];
 	static String mensagem = "";
+	static String musicaMaisTocada;
 	
 	public static void initialize() {
 		for(int i = 0; i < TAMANHO; i++) {
@@ -184,34 +185,119 @@ public class Trabalho2 {
 //	10) (PROCEDIMENTO e passagem de parâmetro por REFERÊNCIA)Considerando os
 //	compartimentos com final 2 (102,202,302,402), mostre o nome do música mais tocada.
 	public static void questao10() {
-		
+		int maisTocada = 0;
+
+		for(int i = 0; i < TAMANHO; i++) {
+			if(Integer.parseInt(art[i].compartimento)%2 == 0) {
+				if(art[i].numeroVezes > maisTocada) {
+					maisTocada = art[i].numeroVezes;
+					musicaMaisTocada = art[i].musica;
+				}
+			}
+		}
 	}
 
 	public static void main(String[] args) {
 		initialize();
-		
-		questao1();
-		
-		String escolha = JOptionPane.showInputDialog("Informe um artista para saber quantas músicas ele possui na jukebox:");		
-		JOptionPane.showMessageDialog(null, "O artista possui " + questao2(escolha) + " músicas nesta jukebox.");
-		
-		JOptionPane.showMessageDialog(null, "A jukebox tocou " + questao3() + " músicas, portanto possui R$" + questao3() + " em caixa.");
-		
-		JOptionPane.showMessageDialog(null, questao4());
 
-		JOptionPane.showMessageDialog(null, questao5());
+		int choice = 0;
+		do {
+			choice = Integer.parseInt(JOptionPane.showInputDialog("Selecione a operação: "
 
-		escolha = JOptionPane.showInputDialog("Informe o compartimento desejado:");
-		JOptionPane.showMessageDialog(null, questao6(escolha));
+					+ "\n\n1 - Solicite ao usuário o número de vezes que a música foi pedida(TOCADA)"
+	
+					+ "\n\n2 - Solicite ao usuário que informe um nome de um dos artista (STRING) e utilizando"
+					+ "\nPESQUISA LINEAR mostre o número de músicas que este artista possui "
+					+ "\ncadastrado no sistema da JUKEBOX."
+	
+					+ "\n\n3 - Mostre quantas vezes a máquina tocou músicas. Como cada música custa a moeda"
+					+  "\nde R$ 1,00, o dono deseja saber quantos reais tem em caixa."
+	
+					+ "\n\n4 - Mostre o nome do artista, o número do compartimento e a música MAIS PEDIDA."
+	
+					+ "\n\n5 - Mostre o número do compartimento e o nome do artista da música MENOS pedida."
+	
+					+ "\n\n6 - Solicite que o usuário informe um número do compartimento(STRING), mostre o nome"
+					+ "\ndo artista,nome da música e número de vezes que tocou."
+	
+					+ "\n\n7 - Mostre as 10 músicas mais tocadas."
+	
+					+ "\n\n8 - Mostre o número de músicas que tocaram mais vezes que a média de músicas tocadas."
+	
+					+ "\n\n9 - Solicite que o usuário informe o nome de um artista, mostre o número de vezes que"
+					+ "\neste ARTISTA foi tocado nesta JUKEBOX, incluindo a soma de todas as músicas."
+	
+					+ "\n\n10 - Considerando os compartimentos com final 2 (102,202,302,402), mostre o nome"
+					+  "\ndo música mais tocada. "
 
-		questao7();
-		JOptionPane.showMessageDialog(null, "As 10 músicas mais tocadas são: " + mensagem);
+					+ "\n\n0 - SAIR"
+					));
 
-		questao8();
+			switch(choice) {
+				case 1:
+					questao1();
+				break;
 
-		escolha = JOptionPane.showInputDialog("Digite o nome de um artista para saber quantas vezes ele foi tocado:");
-		JOptionPane.showMessageDialog(null, "O artista solicitado tocou " + questao9(escolha)
+				case 2:
+					String escolha = JOptionPane.showInputDialog("Informe um artista para saber quantas"
+					+ " músicas ele possui na jukebox:");
+
+					JOptionPane.showMessageDialog(null, "O artista possui " + questao2(escolha)
+					+ " músicas nesta jukebox.");
+				break;
+
+				case 3:
+					JOptionPane.showMessageDialog(null, "A jukebox tocou " + questao3()
+					+ " músicas, portanto possui R$" + questao3() + " em caixa.");
+				break;
+
+				case 4:
+					JOptionPane.showMessageDialog(null, questao4());
+				break;
+
+				case 5:
+					JOptionPane.showMessageDialog(null, questao5());
+				break;
+
+				case 6:
+					escolha = JOptionPane.showInputDialog("Informe o compartimento desejado:");
+					JOptionPane.showMessageDialog(null, questao6(escolha));
+				break;
+
+				case 7:
+					questao7();
+					JOptionPane.showMessageDialog(null, "As 10 músicas mais tocadas são: " + mensagem);
+				break;
+
+				case 8:
+					questao8();
+				break;
+
+				case 9:
+					escolha = JOptionPane.showInputDialog("Digite o nome de um artista para saber quantas"
+					+ "vezes ele foi tocado:");
+
+					JOptionPane.showMessageDialog(null, "O artista solicitado tocou " + questao9(escolha)
 									+ " músicas ao todo, sendo que a Jukebox tocou " + questao3() + ".");
+				break;
+
+				case 10:
+					questao10();
+					JOptionPane.showMessageDialog(null, "Dentre os compartimentos com final 2," 
+					+ " a música mais tocada é " + musicaMaisTocada);
+				break;
+
+				case 0: 
+				break;
+
+				default:
+					JOptionPane.showMessageDialog(null, "Operação inválida.");
+				break;
+			}
+
+		}while(choice != 0);
+		
+
 
 	}
 }
